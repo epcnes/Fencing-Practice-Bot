@@ -10,7 +10,7 @@ def automate():
      today = datetime.now()
 
      day = today.strftime("%Y-%m-%d")
-     dayoweek = today.strftime('%d')
+     dayoweek = datetime.today().strftime('%A')
 
      bot = Bot("$!")
      channel = bot.get_channel(767871452665741392)
@@ -26,7 +26,10 @@ def automate():
      else:
           message = "deez nutz"
 
-     # print (message)
+     # print (dayoweek)
+     print (message)
+
+# automate()
 
 # def signal():
 #      @tasks.datetime
