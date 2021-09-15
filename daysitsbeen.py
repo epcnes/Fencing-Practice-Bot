@@ -1,1 +1,1 @@
-days_it_be = ['09-14-2021']
+days_it_be = []

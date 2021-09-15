@@ -1,10 +1,10 @@
 from datetime import datetime
 import discord
-from header import token
+from header import token, channelid
 from announcing import automate
 from discord.ext import tasks
-from discord.ext.commands import Bot
 from daysitsbeen import days_it_be
+from cogs import OnReady_Message
 
 client = discord.Client()
 days_its_been = days_it_be
@@ -31,21 +31,15 @@ async def produce():
           print ("task already done today")
      else:
           automate()
-          days_its_been.append(today)
+          # days_its_been.append(today)
           table = open("daysitsbeen.py", "w")
           table.write(f"days_it_be = {days_its_been}")
           table.close()
 
+OnReady_Message(client)
 
-async def time():
-     while time != "16:15:00":
-          now = datetime.now()
-          time = now.strftime("%H:%M:%S")
-          dayoweek = now.strftime("%d")
-          if time == "17:55:00" and (dayoweek == "Tuesday" or dayoweek == "Wednesday"):
-               produce()
-          else:
-               produce()
+import tracemalloc
+tracemalloc.start()            
 
 print ("I'm working on it...")
 client.run(token)
