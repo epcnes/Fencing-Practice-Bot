@@ -1,5 +1,5 @@
 from discord.ext import tasks, commands
-from announcing import automate
+from announcing import automate, fullsend
 
 class OnReady_Message(commands.Cog):
    def __init__(self, client):
@@ -14,7 +14,7 @@ class OnReady_Message(commands.Cog):
    @tasks.loop(count = 1)  # do it only one time
    async def send_onready_message(self):
       channel = self.client.get_channel(int(767871452665741392))
-      automate()
+      await fullsend()
 
    @send_onready_message.before_loop  # wait for the client before starting the task
    async def before_send(self):
@@ -24,11 +24,7 @@ class OnReady_Message(commands.Cog):
 
    @send_onready_message.after_loop  # destroy the task once it's done
    async def after_send(self):
-      self.send_onready_message.close()
-
       return
-   @send_onready_message.after_loop  # destroy the task once it's done
-   async def after_send(self):
-      self.send_onready_message.close()
 
-      return
+#literally took it from here and added channel id and line 17#
+#https://stackoverflow.com/questions/56914557/nonetype-object-has-no-attribute-send-when-work-with-discord-for-python#

@@ -2,14 +2,15 @@ from datetime import datetime
 import discord
 from header import token, channelid
 from announcing import automate
-from discord.ext import tasks
 from daysitsbeen import days_it_be
 from cogs import OnReady_Message
+
+#main program#
 
 client = discord.Client()
 days_its_been = days_it_be
 
-
+#log in#
 @client.event
 async def on_ready():
     print('Logged in as {0.user}'.format(client))
@@ -18,12 +19,15 @@ now = datetime.now()
 time = now.strftime("%H:%M:%S")
 dayoweek = now.strftime("%d")
 
+#test functions by message event#
 @client.event
 async def on_message(message):
      if message.author == client.user:
           return
      if message.content.startswith('$!produce'):
           await produce()
+
+#hopefully automated soon#
 
 async def produce():
      today = now.strftime("%m-%d-%Y")
