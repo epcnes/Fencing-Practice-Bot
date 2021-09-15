@@ -1,7 +1,7 @@
 from datetime import datetime
 import discord
 from header import token, channelid
-from announcing import automate
+from announcing import fullsend
 from daysitsbeen import days_it_be
 from cogs import OnReady_Message
 
@@ -27,14 +27,14 @@ async def on_message(message):
      if message.content.startswith('$!produce'):
           await produce()
 
-#hopefully automated soon#
+#hopefully automate soon#
 
 async def produce():
      today = now.strftime("%m-%d-%Y")
      if today in days_its_been:
           print ("task already done today")
      else:
-          automate()
+          fullsend()
           # days_its_been.append(today)
           table = open("daysitsbeen.py", "w")
           table.write(f"days_it_be = {days_its_been}")

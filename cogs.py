@@ -1,5 +1,5 @@
 from discord.ext import tasks, commands
-from announcing import automate, fullsend
+from announcing import fullsend
 
 class OnReady_Message(commands.Cog):
    def __init__(self, client):
