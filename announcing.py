@@ -1,10 +1,8 @@
-import asyncio
 from datetime import datetime
 import discord
 from discord.ext.commands import Bot
 from discord.utils import async_all
 from days import tuesdays2021, tuesdays2022, wednesdays2021, wednesdays2022
-from header import channelid
 import tracemalloc
 
 tracemalloc.start() 
@@ -23,4 +21,7 @@ async def fullsend():
      else:
           announcement = "deez nutz"
      
-     await channel.send(announcement)
+     def sendoff():
+          channel.send(announcement)
+     
+     await sendoff()
